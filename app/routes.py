@@ -6,12 +6,14 @@ from . import db
 main = Blueprint('main', __name__)
 
 
+# GET ALL USERS - GET
 @main.route('/users', methods=['GET'])
 def get_users():
     users = User.query.all()
     return jsonify([{'id': u.id, 'nome': u.nome, 'email': u.email, 'celular': u.celular} for u in users])
 
 
+# GET USER BY ID - GET
 @main.route('/users/<int:user_id>', methods=['GET'])
 def get_user_by_id(user_id):
     user = User.query.get(user_id)
@@ -20,6 +22,7 @@ def get_user_by_id(user_id):
     return jsonify({'id': user.id, 'nome': user.nome, 'email': user.email, 'celular': user.celular})
 
 
+# CREATE USER - POST
 @main.route('/users', methods=['POST'])
 def create_user():
     if not request.json or not 'nome' in request.json or not 'email' in request.json:
@@ -34,6 +37,7 @@ def create_user():
     return jsonify({'id': new_user.id, 'nome': new_user.nome, 'email': new_user.email, 'celular': new_user.celular}), 201
 
 
+# EDIT USER - PUT
 @main.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
     user = User.query.get(user_id)
@@ -48,6 +52,7 @@ def update_user(user_id):
     return jsonify({'id': user.id, 'nome': user.nome, 'email': user.email, 'celular': user.celular})
 
 
+# DELETE USER - DELETE
 @main.route('/users/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
     user = User.query.get(user_id)
