@@ -7,17 +7,21 @@ Este projeto é uma API RESTful simples construída com **Flask** e **SQLite** p
 ### Pré-requisitos
 
 - **Python 3.x**
-- **pip** (Python package installer)
-- **Virtualenv** (opcional, mas recomendado)
+- **pip**
+- **Virtualenv** (opcional)
 
 ### Crie e Ative um Ambiente Virtual
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
+source venv/bin/activate  
+
+# No Windows: 
+
+venv\Scripts\activate
 ```
 
-### Instale as Dependências
+### Instale as Bibliotecas utilizadas
 
 ```bash
 pip install -r /path/to/requirements.txt
